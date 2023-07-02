@@ -1,0 +1,21 @@
+[build-system]
+build-backend = "cmeel.build"
+requires = ["cmeel-hwloc", "cmeel-metis", "cmeel-openblas", "cmeel[build]"]
+
+[project]
+description = "cmeel distribution for SPRAL"
+license = "BSD-3-Clauses"
+name = "cmeel-spral"
+requires-python = ">= 3.8"
+version = "2023.03.29"
+
+[project.urls]
+homepage = "https://github.com/cmake-wheel/cmeel-spral"
+repository = "https://github.com/cmake-wheel/cmeel-spral.git"
+
+[tool.cmeel]
+py3-none = true
+run-tests = false
+
+[tool.tomlsort]
+all = true

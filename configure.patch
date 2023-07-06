@@ -1,0 +1,19 @@
+--- configure.orig	2023-07-06 10:31:24.492949115 +0200
++++ configure	2023-07-06 10:40:56.698062149 +0200
+@@ -9492,15 +9492,7 @@
+ 
+ 
+ # Check for hwloc
+-PKG_PROG_PKG_CONFIG # initialise $PKG_CONFIG
+-PKG_CONFIG="$PKG_CONFIG --static" # we will be linking statically
+-PKG_CHECK_MODULES(HWLOC, hwloc,
+-
+-printf "%s\n" "#define HAVE_HWLOC 1" >>confdefs.h
+-,
+-   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: hwloc not supplied: cannot detect NUMA regions" >&5
+-printf "%s\n" "$as_me: WARNING: hwloc not supplied: cannot detect NUMA regions" >&2;}
+-   )
++echo "#define HAVE_WHLOC 1" >>confdefs.h
+ 
+ if test "x$NVCC" != x
+ then :

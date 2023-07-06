@@ -14,11 +14,6 @@ list(JOIN BLAS_LDFLAGS " " BLAS_LIBS)
 list(JOIN HWLOC_LDFLAGS " " HWLOC_LIBS)
 string(REPLACE "hwloc" "metis" METIS_LIBS ${HWLOC_LIBS}) # ugh
 
-set(PATCH_COMMAND
-    "sed" "-zi"
-    "s/PKG_PROG_PKG_CONFIG[^)]*)/echo \"#define HAVE_HWLOC 1\" >>confdefs.h/"
-    "./configure") # ugh
-
 set(SET_FLAGS
     "${CMAKE_COMMAND}"
     "-E"
@@ -35,7 +30,7 @@ ExternalProject_Add(
   BUILD_IN_SOURCE ON
   DOWNLOAD_EXTRACT_TIMESTAMP OFF
   CONFIGURE_COMMAND "./autogen.sh"
-  COMMAND ${PATCH_COMMAND}
+  COMMAND "patch" "-i" "${CMAKE_SOURCE_DIR}/configure.patch"
   COMMAND
     ${SET_FLAGS} "./configure" "--prefix=${CMAKE_INSTALL_PREFIX}"
     "--with-blas=${BLAS_LIBS}" "--with-lapack=${BLAS_LIBS}"

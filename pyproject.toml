@@ -1,6 +1,6 @@
 [build-system]
 build-backend = "cmeel"
-requires = ["cmeel-hwloc", "cmeel-metis", "cmeel-openblas", "cmeel[build]"]
+requires = ["cmeel-autoconf", "cmeel-hwloc", "cmeel-metis", "cmeel-openblas", "cmeel[build]"]
 
 [project]
 description = "cmeel distribution for SPRAL"

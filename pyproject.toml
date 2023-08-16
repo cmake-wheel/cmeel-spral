@@ -14,7 +14,7 @@ homepage = "https://github.com/cmake-wheel/cmeel-spral"
 repository = "https://github.com/cmake-wheel/cmeel-spral.git"
 
 [tool.cmeel]
-build-number = 1
+build-number = 2
 has-sitelib = false
 run-tests = false
 

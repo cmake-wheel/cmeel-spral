@@ -14,11 +14,11 @@ jobs:
     runs-on: "ubuntu-latest"
     strategy:
       matrix:
-        image: ["manylinux_2_28", "musllinux_1_1"]
+        image: ["manylinux_2_28"]  #, "musllinux_1_1"]
         arch: ["x86_64", "aarch64"]
-        exclude:
-          - image: "musllinux_1_1"
-            arch: "aarch64"
+        #exclude:
+          #- image: "musllinux_1_1"
+            #arch: "aarch64"
     steps:
       - uses: actions/checkout@v3
         with:

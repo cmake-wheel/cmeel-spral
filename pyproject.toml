@@ -2,6 +2,7 @@
 build-backend = "cmeel"
 requires = [
   "cmeel-autoconf",
+  "cmeel-gklib",
   "cmeel-hwloc",
   "cmeel-metis",
   "cmeel-openblas",

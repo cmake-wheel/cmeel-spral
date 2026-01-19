@@ -12,7 +12,7 @@ on:
 
 env:
   CMEEL_LOG_LEVEL: DEBUG
-  DEPS: cmeel-autoconf cmeel-hwloc cmeel-metis cmeel-openblas meson ninja
+  DEPS: cmeel-autoconf cmeel-gklib cmeel-hwloc cmeel-metis cmeel-openblas meson ninja
   PROJECT: cmeel-spral
 
 jobs:

@@ -8,14 +8,14 @@ set(SHA256 1358168ac95297049e4fc810e54a16e0c765796cfbaa156e09979e2620b7dae7)
 set(TAG_PREFIX v)
 
 project("cmeel-${NAME}" VERSION ${VERSION})
-cmake_pkg_config(IMPORT openblas REQUIRED)
-set(CONFIGURE_COMMAND "${CMAKE_COMMAND}" "-E" "env"
-                      "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}" "--")
+
 set(CONFIGURE_COMMAND
-    ${CONFIGURE_COMMAND} "meson" "setup" "builddir" "-Dexamples=true"
-    "-Dtests=true" "-Dlibblas=openblas" "-Dliblapack=openblas"
+    "${CMAKE_COMMAND}" "-E" "env" "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}" "--"
+    "meson" "setup" "builddir" "-Dexamples=true" "-Dtests=true"
+    "-Dlibblas=openblas" "-Dliblapack=openblas"
     "-Dlibmetis_path=$ENV{CMEEL_AVAILABLE_PREFIX}/lib"
     "--prefix=${CMAKE_INSTALL_PREFIX}")
+
 if(APPLE)
   set(CONFIGURE_COMMAND ${CONFIGURE_COMMAND} "-Dopenmp=false")
 endif()

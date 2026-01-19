@@ -15,15 +15,14 @@ requires = [
 description = "cmeel distribution for SPRAL"
 license = "BSD-3-Clauses"
 name = "cmeel-spral"
-requires-python = ">= 3.8"
-version = "2023.03.29"
+requires-python = ">= 3.10"
+version = "2025.09.18"
 
 [project.urls]
 homepage = "https://github.com/cmake-wheel/cmeel-spral"
 repository = "https://github.com/cmake-wheel/cmeel-spral.git"
 
 [tool.cmeel]
-build-number = 2
 has-sitelib = false
 run-tests = false
 

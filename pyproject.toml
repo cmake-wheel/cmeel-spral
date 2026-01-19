@@ -6,7 +6,8 @@ requires = [
   "cmeel-metis",
   "cmeel-openblas",
   "cmeel[build]",
-  "meson"
+  "meson",
+  "ninja"
 ]
 
 [project]

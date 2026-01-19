@@ -9,6 +9,16 @@ set(TAG_PREFIX v)
 
 project("cmeel-${NAME}" VERSION ${VERSION})
 cmake_pkg_config(IMPORT openblas REQUIRED)
+set(CONFIGURE_COMMAND "${CMAKE_COMMAND}" "-E" "env"
+                      "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}" "--")
+set(CONFIGURE_COMMAND
+    ${CONFIGURE_COMMAND} "meson" "setup" "builddir" "-Dexamples=true"
+    "-Dtests=true" "-Dlibblas=openblas" "-Dliblapack=openblas"
+    "-Dlibmetis_path=$ENV{CMEEL_AVAILABLE_PREFIX}/lib"
+    "--prefix=${CMAKE_INSTALL_PREFIX}")
+if(APPLE)
+  set(CONFIGURE_COMMAND ${CONFIGURE_COMMAND} "-Dopenmp=false")
+endif()
 
 include(ExternalProject)
 ExternalProject_Add(
@@ -17,12 +27,7 @@ ExternalProject_Add(
   URL_HASH "SHA256=${SHA256}"
   BUILD_IN_SOURCE ON
   DOWNLOAD_EXTRACT_TIMESTAMP OFF
-  CONFIGURE_COMMAND
-    "${CMAKE_COMMAND}" "-E" "env" "PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}"
-    "meson" "setup" "builddir" "-Dexamples=true" "-Dtests=true"
-    "-Dlibblas=openblas" "-Dliblapack=openblas"
-    "-Dlibmetis_path=$ENV{CMEEL_AVAILABLE_PREFIX}/lib"
-    "--prefix=${CMAKE_INSTALL_PREFIX}"
+  CONFIGURE_COMMAND ${CONFIGURE_COMMAND}
   BUILD_COMMAND "meson" "compile" "-C" "builddir"
   INSTALL_COMMAND "meson" "install" "-C" "builddir")
 
